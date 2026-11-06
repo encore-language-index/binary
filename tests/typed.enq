@@ -1,10 +1,11 @@
-import binary
-import binary::{BinarySerializer, BinaryDeserializer}
 import core::fmt::Debug
 import core::option::Option
 import core::result::Result
 import core::vec::Vec
-import serialize::{Serializer, Deserializer, Limits}
+
+import binary
+import binary::{BinaryDeserializer, BinarySerializer}
+import serialize::{Deserializer, Limits, Serializer}
 extern fn encore_codec_f64_from_bits(bits: u64) -> f64
 extern fn encore_codec_f64_bits(value: f64) -> u64
 struct Sample {
