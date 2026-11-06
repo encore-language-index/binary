@@ -2,8 +2,8 @@
 repository = "https://github.com/encore-language-index/binary"
 name = "binary"
 version = "0.1.0"
-encore = ">=0.1.6"
+encore = ">=0.1.14"
 description = "Versioned typed binary value codec for Encore"
 readme = "README.md"
 licence = "MIT"
-dependencies = ["path@../serialize", "path@../std"]
+dependencies = ["path@../serialize"]
