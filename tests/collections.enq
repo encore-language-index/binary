@@ -1,8 +1,9 @@
-import binary
+import core::dict::Dict
 import core::option::Option
 import core::result::Result
 import core::vec::Vec
-import std::dict::Dict
+
+import binary
 struct Envelope[T] {
     label: str
     value: T

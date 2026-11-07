@@ -1,13 +1,14 @@
 //! Portable value serialization: EBS1, little endian, typed length-delimited blocks.
 import core::fmt::Debug
+import core::dict::{Dict, Hashable}
 import core::ops::Eq
 import core::option::Option
 import core::reflect
-import core::reflect::{TypeInfo, Kind}
+import core::reflect::{Kind, TypeInfo}
 import core::result::Result
 import core::vec::Vec
-import serialize::{Serializer, Deserializer, Error, ErrorKind, Limits}
-import std::dict::{Dict, Hashable}
+
+import serialize::{Deserializer, Error, ErrorKind, Limits, Serializer}
 
 extern fn encore_codec_f64_bits(value: f64) -> u64
 extern fn encore_codec_f32_bits(value: f32) -> u32

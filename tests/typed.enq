@@ -1,11 +1,11 @@
-import binary
-import binary::{BinarySerializer, BinaryDeserializer}
 import core::fmt::Debug
 import core::option::Option
 import core::result::Result
 import core::vec::Vec
-import serialize::{Serializer, Deserializer, Limits}
-import std::io::eprintln
+
+import binary
+import binary::{BinaryDeserializer, BinarySerializer}
+import serialize::{Deserializer, Limits, Serializer}
 extern fn encore_codec_f64_from_bits(bits: u64) -> f64
 extern fn encore_codec_f64_bits(value: f64) -> u64
 struct Sample {
@@ -38,7 +38,7 @@ fn main() -> u32 {
     }
     let decoded = match binary::decode[Sample](encoded) {
         Ok(value) => value Err(error) => {
-            eprintln(error.message() + " at " + error.path() + " byte " + Debug::fmt(error.offset().unwrap_or(0))) ret 2
+            ret 2
         }
     }
     if decoded.name != source.name || decoded.count != source.count || decoded.values.len() != 2 {
