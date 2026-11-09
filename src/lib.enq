@@ -137,7 +137,7 @@ fn put(writer: mut Writer, value: u64, width: usize) -> Result[(), Error] {
     reserve_output(writer, width)?
     let mut index = 0_usize
     while index < width {
-        writer.bytes.push(((value >>(index * 8)) & 255_u64) as u8) index += 1
+        writer.bytes.push(((value >>((index as u64) * 8_u64)) & 255_u64) as u8) index += 1
     }
     ret Result::Ok(())
 }
@@ -151,7 +151,7 @@ fn finish(writer: mut Writer, position: usize) -> Result[(), Error] {
     let len =(writer.bytes.len() - position - 8) as u64
     let mut index = 0_usize
     while index < 8 {
-        writer.bytes.set(position + index,((len >>(index * 8)) & 255_u64) as u8) index += 1
+        writer.bytes.set(position + index,((len >>((index as u64) * 8_u64)) & 255_u64) as u8) index += 1
     }
     ret Result::Ok(())
 }
@@ -162,7 +162,7 @@ fn take(reader: mut Reader, width: usize) -> Result[u64, Error] {
     let mut result = 0_u64
     let mut index = 0_usize
     while index < width {
-        result = result |((reader.bytes.get(reader.position).unwrap_or(0) as u64) <<(index * 8))
+        result = result |((reader.bytes.get(reader.position).unwrap_or(0) as u64) <<((index as u64) * 8_u64))
         reader.position += 1 index += 1
     }
     ret Result::Ok(result)
